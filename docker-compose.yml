@@ -1,0 +1,21 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: logpaste-backend:latest
+    container_name: logpaste_backend
+    ports:
+      - "3001:3001"  
+    environment:
+      - DB_SYNC_INTERVAL=10s
+    volumes:
+      - ./static:/app/static
+      - ./views:/app/views
+      - ./litestream.yml:/etc/litestream.yml
+    networks:
+      - backend_network
+
+networks:
+  backend_network:
+    driver: bridge
