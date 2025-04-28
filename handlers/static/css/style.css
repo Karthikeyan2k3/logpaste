@@ -1,8 +1,8 @@
 @import url(light.css) (prefers-color-scheme: light);
-@import url(../third-party/prism/light.css) (prefers-color-scheme: light);
+
 
 @import url(dark.css) (prefers-color-scheme: dark);
-@import url(../third-party/prism/dark.css) (prefers-color-scheme: dark);
+
 
 body {
   font-family: "Trebuchet MS", Tahoma, Georgia, Garamond;
@@ -127,4 +127,25 @@ button {
 
 .footer {
   margin-bottom: 5rem;
+}
+
+pre code{
+  color: #f0f0f0;
+  font-family: monospace;
+}
+
+.cmd{
+  color: #ffa500;
+}
+
+.str{
+  color: #9acd32;
+}
+
+.kwd{
+  color: #8c30f5;
+}
+
+.url{
+  color: #ffffff;
 }

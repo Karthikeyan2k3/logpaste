@@ -7,41 +7,30 @@ const baseUrl = document.location.origin;
 
 const curlCmd = document.getElementById("curl-cmd");
 if (curlCmd) {
-  curlCmd.innerHTML = Prism.highlight(
-    `
-echo "some text I want to upload" | \\
-  curl -F '_=<-' ${baseUrl}`.trim(),
-    Prism.languages.bash,
-    "bash",
-  );
+  curlCmd.innerHTML = `
+<span class="str">echo "some text I want to upload"</span> <span class="cmd">|</span> \\
+  &nbsp;curl <span class="cmd">-F</span> '_=<-' <span class="url">${baseUrl}</span>`.trim();
 }
 
 const curlFileCmd = document.getElementById("curl-file-cmd");
 if (curlFileCmd) {
-  curlFileCmd.innerHTML = Prism.highlight(
-    `
-curl -F "_=@/path/to/file.txt" ${baseUrl}`.trim(),
-    Prism.languages.bash,
-    "bash",
-  );
+  curlFileCmd.innerHTML =`
+curl <span class="cmd">-F</span> <span class="str">"_=@/path/to/file.txt</span>" <span class="url">${baseUrl}</span>
+  `.trim();
 }
 
 const jsExample = document.getElementById("js-example");
 if (jsExample) {
-  jsExample.innerHTML = Prism.highlight(
-    `
-<script src="${baseUrl}/js/logpaste.js"></script>
-<script>
-const text = "some text I want to upload";
+  jsExample.innerHTML = `
+<span class="cmd">&lt;</span>script src<span class="cmd">=</span><span class="str">"${baseUrl}/js/logpaste.js"</span><span class="cmd">&gt;</span><span class="cmd">&lt;/</span>script<span class="cmd">&gt;</span>
+<span class="cmd">&lt;</span>script<span class="cmd">&gt;</span>
+<span class="kwd">const</span> text <span class="cmd">=</span> <span class="str">"some text I want to upload"</span>;
 
-logpaste.uploadText(text).then((id) => {
-  console.log(\`uploaded to ${baseUrl}/\${id}\`);
+logpaste.uploadText(text).then((id) <span class="cmd">=></span> {
+&nbsp;&nbsp;console.log(<span class="str">\`uploaded to ${baseUrl}/</span>\${id}\`);
 });
-</script>
-    `.trim(),
-    Prism.languages.javascript,
-    "javascript",
-  );
+<span class="cmd">&lt;/</span>script<span class="cmd">&gt;</span>
+    `.trim();
 }
 
 function displayResult(resultId) {
